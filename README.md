@@ -34,6 +34,9 @@ python main.py
 ```
 7. Input your API key when prompted
 
+8.Update 
+  cd Dor
+  git pull --rebase
 # Info
 
 ## PS for Certain Indonesian mobile internet service provider
