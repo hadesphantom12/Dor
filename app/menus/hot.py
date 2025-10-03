@@ -82,7 +82,7 @@ def show_hot_menu2():
         print("===================🔥 Paket  Hot 2 🔥==================")
         print("=======================================================")
         
-        url = "https://me.mashu.lol/pg-hot2.json"
+        url = ""
         response = requests.get(url, timeout=30)
         if response.status_code != 200:
             print("Gagal mengambil data hot package.")
