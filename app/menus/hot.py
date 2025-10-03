@@ -74,30 +74,23 @@ def show_hot_menu():
 def show_hot_menu2():
     api_key = AuthInstance.api_key
     tokens = AuthInstance.get_active_tokens()
-    
     in_bookmark_menu = True
+    url = input("Masukkan URL: ")
     while in_bookmark_menu:
         clear_screen()
         print("=======================================================")
-        print("===================🔥 Paket  Hot 2 🔥==================")
+        print("===================🔥 Paket Hot 2 🔥==================")
         print("=======================================================")
-        
-        url = input ( "masukan url: ")
-        response = requests.get(url, timeout=30)
-        if response.status_code != 200:
-            print("Gagal mengambil data hot package.")
+        try:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()  
+            print("File JSON:")
+            print(json.dumps(response.json(), indent=4))  
             pause()
-            return None
-
-        hot_packages = response.json()
-
-        for idx, p in enumerate(hot_packages):
-            print(f"{idx + 1}. {p['name']}\n   Harga: {p['price']}")
-        
-        print("00. Kembali ke menu utama")
-        print("-------------------------------------------------------")
-        choice = input("Pilih paket (nomor): ")
-        if choice == "00":
+            in_bookmark_menu = False
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+            pause()
             in_bookmark_menu = False
             return None
         if choice.isdigit() and 1 <= int(choice) <= len(hot_packages):
