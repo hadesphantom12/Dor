@@ -7,6 +7,7 @@ from app.menus.util import clear_screen, pause
 from app.client.ewallet import show_multipayment_v2
 from app.client.qris import show_qris_payment_v2
 from app.type_dict import PaymentItem
+import json
 
 def show_hot_menu():
     api_key = AuthInstance.api_key
